@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.rpsouza.blogapp.data.dto.PostResponseDTO
 import com.rpsouza.blogapp.databinding.PostCardItemBinding
+import com.rpsouza.blogapp.presenter.postDetails.adapter.CommentsAdapter
 
 class PostAdapter(
     private val postDetails: (postTitle: String, postDescription: String) -> Unit

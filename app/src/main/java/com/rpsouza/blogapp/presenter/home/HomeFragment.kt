@@ -10,9 +10,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rpsouza.blogapp.R
 import com.rpsouza.blogapp.databinding.FragmentHomeBinding
 import com.rpsouza.blogapp.presenter.home.adapter.PostAdapter
+import com.rpsouza.blogapp.presenter.postDetails.adapter.CommentsAdapter
 import com.rpsouza.blogapp.utils.StateView
 import dagger.hilt.android.AndroidEntryPoint
 
