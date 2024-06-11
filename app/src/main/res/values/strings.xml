@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Blog App</string>
 
+    <!--    Generic-->
+    <string name="text_empty_list">Sem resultado</string>
+
     <!--    PostCardItem-->
     <string name="text_title_post_card_item">Titulo:</string>
     <string name="text_description_post_card_item">Descrição:</string>

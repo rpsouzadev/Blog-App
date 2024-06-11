@@ -1,10 +1,8 @@
 package com.rpsouza.blogapp.di
 
 import android.content.Context
-import com.rpsouza.blogapp.data.repository.PostRepositoryImpl
-import com.rpsouza.blogapp.domain.repository.PostRepository
+import com.rpsouza.blogapp.data.store.SharedPreferenceHelper
 import com.rpsouza.blogapp.utils.NetworkHelper
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,10 +12,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class DomainModule {
+class DataModule {
 
-    @Binds
-    abstract fun bindsPostRepositoryImpl(
-        postRepositoryImpl: PostRepositoryImpl
-    ): PostRepository
+    @Provides
+    @Singleton
+    fun providerSharedPreferenceHelper(@ApplicationContext context: Context) = SharedPreferenceHelper(context)
+
+    @Provides
+    @Singleton
+    fun provideRNetworkHelper(@ApplicationContext context: Context) = NetworkHelper(context)
 }
