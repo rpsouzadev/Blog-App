@@ -45,10 +45,16 @@ class HomeFragment : Fragment() {
                 is StateView.Loading -> {
                     binding.progressBar.isVisible = true
                 }
+
                 is StateView.Success -> {
                     binding.progressBar.isVisible = false
-                    postAdapter.submitList(stateView.data)
+                    if (stateView.data?.isNotEmpty() == true) {
+                        postAdapter.submitList(stateView.data)
+                    } else {
+                        binding.textEmptyList.isVisible = true
+                    }
                 }
+
                 is StateView.Error -> {
                     binding.progressBar.isVisible = false
                     Toast.makeText(requireContext(), stateView.message, Toast.LENGTH_SHORT).show()

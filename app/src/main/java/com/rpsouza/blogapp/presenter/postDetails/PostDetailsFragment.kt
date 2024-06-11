@@ -72,7 +72,12 @@ class PostDetailsFragment : Fragment() {
                 }
                 is StateView.Success -> {
                     binding.progressBar.isVisible = false
-                    commentsAdapter.submitList(stateView.data)
+
+                    if (stateView.data?.isNotEmpty() == true) {
+                        commentsAdapter.submitList(stateView.data)
+                    } else {
+                        binding.textEmptyList.isVisible = true
+                    }
                 }
                 is StateView.Error -> {
                     binding.progressBar.isVisible = false
