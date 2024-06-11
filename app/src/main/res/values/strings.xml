@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Blog App</string>
+
+    <!--    PostCardItem-->
+    <string name="text_title_post_card_item">Titulo:</string>
+    <string name="text_description_post_card_item">Descrição:</string>
+
+    <!--    PostDetailsFragment-->
+    <string name="text_title_toolbar_post_details_fragment">Detalhes do post</string>
+    <string name="text_comment_post_details_fragment">Comentários:</string>
+
+    <!--    CommentItem-->
+    <string name="text_username_comment_item">Usuário:</string>
+    <string name="text_email_comment_item">Email:</string>
+    <string name="text_comment_comment_item">Comentário:</string>
+
 </resources>

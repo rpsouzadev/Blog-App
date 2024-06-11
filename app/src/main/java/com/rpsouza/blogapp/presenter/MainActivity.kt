@@ -1,4 +1,4 @@
-package com.rpsouza.blogapp
+package com.rpsouza.blogapp.presenter
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
