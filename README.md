@@ -7,7 +7,7 @@
 
 <br>
 
-O blog app é um desafil para vaga de desenvolvedor android jr, onde o app simula um blog consumindo a api https://jsonplaceholder.typicode.com/. E nesse dasafio foi rquerido as seguintes tarefas:
+O Blog App é um desafio para a vaga de desenvolvedor Android Júnior, no qual o aplicativo simula um blog consumindo a API https://jsonplaceholder.typicode.com/. Neste desafio, foram solicitadas as seguintes tarefas::
 
 - Exibir uma lista retornada da api
 - Criar uma interface propria
