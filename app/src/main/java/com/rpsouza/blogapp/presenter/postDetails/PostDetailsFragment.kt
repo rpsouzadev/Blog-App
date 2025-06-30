@@ -40,14 +40,10 @@ class PostDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initToolbar(toolbar = binding.toolbar)
-        initConfigData()
+        setupView()
         initRecycler()
-        getComments()
-    }
-
-    private fun initConfigData() {
-        binding.textTitle.text = args.postTitle
-        binding.textDescription.text = args.postDescription
+        postDetailsViewModel.onAction(PostDetailsAction.LoadPostDetails(postId = 10))
+        setupObservers()
     }
 
     private fun initRecycler() {
@@ -64,26 +60,31 @@ class PostDetailsFragment : Fragment() {
         }
     }
 
-    private fun getComments() {
-        postDetailsViewModel.getComments().observe(viewLifecycleOwner) { stateView ->
-            when (stateView) {
-                is StateView.Loading -> {
-                    binding.progressBar.isVisible = true
+    private fun setupObservers() {
+        postDetailsViewModel.uiState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is PostDetailsUiState.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
                 }
-                is StateView.Success -> {
-                    binding.progressBar.isVisible = false
 
-                    if (stateView.data?.isNotEmpty() == true) {
-                        commentsAdapter.submitList(stateView.data)
-                    } else {
-                        binding.textEmptyList.isVisible = true
-                    }
+                is PostDetailsUiState.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    commentsAdapter.submitList(state.comments)
                 }
-                is StateView.Error -> {
-                    binding.progressBar.isVisible = false
-                    Toast.makeText(requireContext(), stateView.message, Toast.LENGTH_SHORT).show()
+
+                is PostDetailsUiState.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private fun setupView() {
+        binding.textTitle.text = args.postTitle
+        binding.textDescription.text = args.postDescription
+        binding.btnReloadComment.setOnClickListener {
+            postDetailsViewModel.onAction(PostDetailsAction.RefreshComments)
         }
     }
 
