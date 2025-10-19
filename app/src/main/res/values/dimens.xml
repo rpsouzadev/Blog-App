@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="bs_radius_2xl">24dp</dimen>
+    <dimen name="bs_padding">20dp</dimen>
+    <dimen name="bs_space_m">12dp</dimen>
+    <dimen name="bs_inset_bottom_space">8dp</dimen>
+    <dimen name="item_height">56dp</dimen>
+    <dimen name="item_icon">24dp</dimen>
+    <dimen name="item_space">12dp</dimen>
+</resources>

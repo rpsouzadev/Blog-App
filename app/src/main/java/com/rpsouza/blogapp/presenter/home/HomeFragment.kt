@@ -11,7 +11,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rpsouza.blogapp.databinding.FragmentHomeBinding
+import com.rpsouza.blogapp.domain.model.MapAppOption
 import com.rpsouza.blogapp.presenter.home.adapter.PostAdapter
+import com.rpsouza.blogapp.presenter.home.bottomsheet.MapsChooserBottomSheet
 import com.rpsouza.blogapp.presenter.postDetails.adapter.CommentsAdapter
 import com.rpsouza.blogapp.utils.StateView
 import dagger.hilt.android.AndroidEntryPoint
@@ -65,12 +67,18 @@ class HomeFragment : Fragment() {
 
     private fun initRecycler() {
         postAdapter = PostAdapter { postTitle, postDescription ->
-            val action = HomeFragmentDirections.actionHomeFragmentToPostDetailsFragment(
-                postTitle = postTitle,
-                postDescription = postDescription,
-            )
-
-            findNavController().navigate(action)
+            MapsChooserBottomSheet.newInstance(
+                addressLabel = "Teatro Porto",
+                addressQuery = "Alameda Barão de Piracicaba, 740 - Campos Elíseos, São Paulo - SP, 01216-012",
+                lat = -23.530238,
+                lng = -46.6453575
+            ).apply {
+                listener = object : MapsChooserBottomSheet.Listener {
+                    override fun onOptionClicked(option: MapAppOption) {
+                        // analytics, se quiser
+                    }
+                }
+            }.show(parentFragmentManager, "MapsChooserBottomSheet")
         }
 
         with(binding.recyclerPost) {

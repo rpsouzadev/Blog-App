@@ -17,4 +17,8 @@
     <string name="text_email_comment_item">Email:</string>
     <string name="text_comment_comment_item">Comentário:</string>
 
+
+    <string name="content_desc_icon">Ícone do aplicativo de mapa</string>
+    <string name="como_chegar_title">Como chegar</string>
+
 </resources>
